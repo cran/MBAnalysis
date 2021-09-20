@@ -1,0 +1,26 @@
+#' Ham data
+#'
+#' Case study pertaining to the sensory evaluation of eight American dry-cured ham products, performed by a panel of trained assessors.
+#'
+#' @docType data
+#'
+#' @usage data(ham)
+#'
+#' @format An object of class \code{"list"} with 8 products,  3 blocks of X variables (Flavor, Aroma, Texture) and 1 block of Y variables corresponding to hedonic measures:
+#' \describe{
+#' \item{X}{dataframe of 8 products and 25 variables structured into 3 blocks: Flavor (11 variables), Aroma (8 variables) and Texture (6 variables)}
+#' \item{Y}{dataframe of 8 products and 6 vectors of hedonic values corresponding to consumers' segmentation}
+#' \item{group}{vector indicating the number of variables per block}
+#' }
+#' @references M.D. Guardia, A.P. Aguiar, A. Claret, J. Arnau & L. Guerrero (2010). Sensory characterization of dry-cured ham using free-choice profiling. Food Quality and Preference, 21(1), 148-155.
+#' \doi{https://doi.org/10.1016/j.foodqual.2009.08.014}
+#'
+#' @keywords datasets
+#'
+#'
+#' @examples
+#' data(ham)
+#' ham$X
+#' ham$Y
+#' ham$group
+"ham"
