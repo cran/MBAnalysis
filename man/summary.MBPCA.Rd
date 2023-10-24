@@ -2,38 +2,29 @@
 % Please edit documentation in R/summary.MBPCA.R
 \name{summary.MBPCA}
 \alias{summary.MBPCA}
-\title{Summary Results for Multiblock Principal Components Analysis (MB-PCA)}
+\title{Summary of \code{\link{MBPCA}} objects}
 \usage{
-\method{summary}{MBPCA}(object, nvar = NULL, ncompprint = NULL, digits = 2, ...)
+\method{summary}{MBPCA}(object, ...)
 }
 \arguments{
-\item{object}{An object of class \code{MBPCA}.}
+\item{object}{An object resulting from \code{\link{MBPCA}}.}
 
-\item{nvar}{Number of variables to print. By default (NULL), all the variables are printed.}
-
-\item{ncompprint}{Number of global components to print. By default (NULL), the number of global components printed for the main function MBPCA.}
-
-\item{digits}{Number of decimal points (by default 2).}
-
-\item{...}{Further arguments.}
+\item{...}{further arguments passed to or from other methods.}
 }
 \value{
-Returns the percentages of inertia explained by successive global components, their cumulative values
-and the correlations of the original variables with the global components.
+The summary.
 }
 \description{
-Gives key results for MB-PCA.
+Edits the Cumulative Explained Variance, Block Explained Variance per Dimension and Block Saliences per Dimension of a \code{\link{MBPCA}} object.
 }
 \examples{
 data(ham)
 X=ham$X
-group=ham$group
-res.mbpca <- MBPCA(X, group, plotgraph=FALSE)
+block=ham$block
+res.mbpca <- MBPCA(X,block, name.block=names(block))
 summary(res.mbpca)
+
 }
 \seealso{
-\code{\link{MBPCA}}
-}
-\author{
-Essomanda TCHANDAO MANGAMANA \email{tchanesso@yahoo.fr}, Véronique CARIOU, Evelyne VIGNEAU.
+\code{\link{plot.MBPCA}}
 }

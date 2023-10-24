@@ -6,67 +6,48 @@
 \usage{
 MBPCA(
   X,
-  group,
-  algo = "eigen",
-  ncompprint = NULL,
-  scale = "none",
-  option = "uniform",
-  nstart = 10,
-  threshold = 1e-08,
-  plotgraph = TRUE,
-  axes = c(1, 2)
+  block,
+  name.block = NULL,
+  ncomp = NULL,
+  scale = TRUE,
+  scale.block = TRUE
 )
 }
 \arguments{
-\item{X}{Block obtained by horizontally merging all the blocks of variables.}
+\item{X}{Dataset obtained by horizontally merging all the blocks of variables.}
 
-\item{group}{Vector which indicates the number of variables in each block.}
+\item{block}{Vector indicating the number of variables in each block.}
 
-\item{algo}{Type of algorithm to use. Either "eigen" (default) or "nipals".}
+\item{name.block}{names of the blocks of variables (NULL by default).}
 
-\item{ncompprint}{Number of global components to print.
-By default (NULL), all the global components of the analysis are printed.}
+\item{ncomp}{Number of dimensions to compute. By default (NULL), all the global components are extracted.}
 
-\item{scale}{Type of standardization applied to the variables. Either "none" (default) or "sd".
-If scale="sd", each variable is divided by its standard deviation.}
+\item{scale}{Logical, if TRUE (by default) then variables are scaled to unit variance (all variables are centered anyway).}
 
-\item{option}{Type of normalization applied to each block of variables (either "none" or "uniform").
-If option="uniform" (default), each block of variables is divided by its Frobenius norm.}
-
-\item{nstart}{Number of random initializations of the global component in case of nipals algorithm (by default 10).}
-
-\item{threshold}{Value used to break the iterative loop (by default 1e-8).}
-
-\item{plotgraph}{Boolean (TRUE/FALSE). If TRUE (default), graphs depicting scores of individuals, correlations of variables with the global components and contributions of blocks of variables to the determination of global components are displayed.}
-
-\item{axes}{Vector of length two which specifies the global components to plot (by default the first two).}
+\item{scale.block}{Logical, if TRUE (by default) each block of variables is divided by the square root of its inertia (Frobenius norm).}
 }
 \value{
 Returns a list of the following elements:\cr
 
-components  :  Numeric vector of length two that indicates the number of global components of the analysis and the number of global components to print.
+\item{optimalcrit}{Numeric vector of the optimal value of the criterion (sum of saliences) obtained for each dimension.}
 
-optimalcrit  :  Numeric vector that gives the optimal value of the criterion to be maximized for each dimension.
+\item{saliences}{Matrix of the specific weights of each block of variables on the global components, for each dimension.}
 
-cumexplained  :  Two columns matrix of percentages of total inertia of the blocks of variables explained by the successive global components and their cumulative values.
+\item{T.g}{Matrix of normed global components.}
 
-explained.X  :  Matrix of percentages of inertia explained in each Xb block.
+\item{Scor.g}{Matrix of global components (scores of individuals).}
 
-contrib  :  Matrix of contribution of each Xb block to the determination of global components.
+\item{W.g}{Matrix of global weights (normed) associated with deflated X.}
 
-T  :  Matrix of global components (scores of individuals).
+\item{Load.g}{Matrix of global loadings (normed) = W.g in the specific context of MB-PCA.}
 
-C  :  Compromise matrix (unnormed global components).
+\item{Proj.g}{Matrix of global projection (to compute scores from pretreated X) = W.g in the specific context of MB-PCA.}
 
-globalcor  :  Matrix of correlation coefficients between variables and global components.
+\item{explained.X}{Matrix of percentages of inertia explained in each block of variables.}
 
-cor.g.b  :  Array that gives the correlation of the global components with their respective block components.
+\item{cumexplained}{Matrix giving the percentages, and cumulative percentages, of total inertia of X blocks explained by the global components.}
 
-\item{Block}{ : Results associated with each block Xb.
-         \itemize{
-               \item {T.b}{ : Array that contains the matrices of block components.}
-               \item {blockcor}{ : List of matrices of correlation coefficients between the original variables of each block and the block components.}
-       }}
+\item{Block}{A list containing block components (T.b) and block weights (W.b)}
 }
 \description{
 Performs MB-PCA on a set of quantitative blocks of variables.
@@ -74,9 +55,10 @@ Performs MB-PCA on a set of quantitative blocks of variables.
 \examples{
 data(ham)
 X=ham$X
-group=ham$group
-res.mbpca <- MBPCA(X, group)
-res.mbpca
+block=ham$block
+res.mbpca <- MBPCA(X,block, name.block=names(block))
+summary(res.mbpca)
+plot(res.mbpca)
 
 }
 \references{
@@ -86,8 +68,5 @@ selection, in: Proc. Symp. On PLS Model Building: Theory and Application, Frankf
 E. Tchandao Mangamana, V. Cariou, E. Vigneau, R. Glèlè Kakaï, E.M. Qannari (2019). Unsupervised multiblock data analysis: A unified approach and extensions, Chemometrics and Intelligent Laboratory Systems, 194, 103856.
 }
 \seealso{
-\code{\link{print.MBPCA}}    \code{\link{plot.MBPCA}}    \code{\link{summary.MBPCA}}
-}
-\author{
-Essomanda TCHANDAO MANGAMANA \email{tchanesso@yahoo.fr}, Véronique CARIOU, Evelyne VIGNEAU.
+\code{\link{summary.MBPCA}}    \code{\link{plot.MBPCA}}
 }

@@ -2,86 +2,33 @@
 % Please edit documentation in R/plot.ComDim.R
 \name{plot.ComDim}
 \alias{plot.ComDim}
-\title{Main Graphs for Common Dimensions analysis (ComDim)}
+\title{Default plots for \code{\link{ComDim}} objects}
 \usage{
-\method{plot}{ComDim}(
-  x,
-  axes = c(1, 2),
-  graphtype = c("saliences", "globalscores", "blockscores", "globalcor", "blockcor",
-    "expl", "cumexpl", "crit", "contrib"),
-  select = NULL,
-  max.overlaps = 20,
-  xlim = NULL,
-  ylim = NULL,
-  title = NULL,
-  color = NULL,
-  ...
-)
+\method{plot}{ComDim}(x, axes = c(1, 2), size = 2.25, ...)
 }
 \arguments{
-\item{x}{An object of class \code{ComDim}.}
+\item{x}{An object resulting from \code{\link{ComDim}}.}
 
-\item{axes}{A vector of length two which specifies the global components to plot (by default the first two).}
+\item{axes}{Which dimensions should be plotted?}
 
-\item{graphtype}{Type of graph to plot. Either "saliences", "globalscores", "blockscores","globalcor","blockcor", "expl", "cumexpl", "crit" or "contrib".
-Refer to the details section.}
+\item{size}{The overall size of labels, points, etc.}
 
-\item{select}{Selection of elements to plot. By default (NULL), all the elements are plotted. Refer to the details section.}
-
-\item{max.overlaps}{Exclude text labels that overlap too many things (by default, 20).}
-
-\item{xlim}{Range for the plotted 'x' values.}
-
-\item{ylim}{Range for the plotted 'y' values.}
-
-\item{title}{Title of the graph to draw.}
-
-\item{color}{Color for the plot.}
-
-\item{...}{Further arguments.}
+\item{...}{further arguments passed to or from other methods.}
 }
 \value{
-Returns graphs showing the relationships between blocks of variables, projection of individuals in both global and block components, the correlations of variables with the global and block components,
-the percentages of inertia explained by the global components and their cumulative values, the values of the maximization criterion and the contributions of the blocks
-to the determination of global components.
+The default plots.
 }
 \description{
-Plot the main graphs for ComDim.
-}
-\details{
-The explanation of the arguments graphtype and select is as follow.\cr
-If graphtype="saliences", the relationships between blocks of variables are shown.\cr
-If select=NULL, all the blocks are shown, otherwise, only the selected ones are shown.\cr
-If graphtype="globalscores", individuals are projected on the space formed by the global components.\cr
-In this case, if for example, select=NULL, all the individuals are plotted. However, if select=5, only the first five individuals are plotted.\cr
-If graphtype="blockscores", individuals are projected on the space formed by the block components.\cr
-If select=NULL, individuals of each block are plotted on separate figures.\cr
-If select=c(1,3), individuals of blocks 1 and 3 are plotted on separate figures.\cr
-If graphtype="globalcor", correlations of original variables with the global components are depicted.\cr
-If select=NULL, correlations of the variables of all the blocks are plotted on the same figure.\cr
-If select=c(1,3), correlations of the variables of blocks 1 and 3 are plotted.\cr
-If graphtype="blockcor", correlations of original variables with the block components are depicted.\cr
-If select=NULL, correlations of the variables of each block are plotted on seperate figures.\cr
-If select=c(1,3), correlations of the variables of blocks 1 and 3 are plotted.\cr
-If graphtype="expl", percentages of inertia of all the blocks explained by the global components are drawn.\cr
-If graphtype="cumexpl", cumulative percentages of inertia of all the blocks explained by the global components are drawn.\cr
-graphtype="crit" plots the values of the maximization criterion.\cr
-graphtype="contrib" depicts the contribution of each block of variables to the determination of the global components.\cr
-For graphtype="expl", "cumexpl", "crit" and "contrib", if select=NULL, all the dimensions are plotted. \cr
-But if for example, select=5, only the first five dimensions are plotted.\cr
+Successively performs \code{\link{MBplotScores}}, \code{\link{MBplotVars}} and \code{\link{MBplotBlocks}} with the default values of parameters but axes and size.
 }
 \examples{
 data(ham)
 X=ham$X
-group=ham$group
-res.comdim <- ComDim(X, group, plotgraph=FALSE)
-plot(res.comdim, graphtype="saliences")
-plot(res.comdim, graphtype="globalcor")
+block=ham$block
+res.comdim <- ComDim(X,block,name.block=names(block))
+plot(res.comdim)
 
 }
 \seealso{
-\code{\link{ComDim}}
-}
-\author{
-Essomanda TCHANDAO MANGAMANA \email{tchanesso@yahoo.fr}, Véronique CARIOU, Evelyne VIGNEAU.
+\code{\link{MBplotScores}} \code{\link{MBplotVars}} \code{\link{MBplotBlocks}}
 }

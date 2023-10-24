@@ -7,97 +7,68 @@
 MBWCov(
   X,
   Y,
-  group,
-  algo = "eigen",
-  ncompprint = NULL,
-  scale = "none",
-  scaleY = "none",
-  option = "uniform",
-  optionY = "uniform",
-  nstart = 10,
-  threshold = 1e-08,
-  plotgraph = TRUE,
-  axes = c(1, 2)
+  block,
+  name.block = NULL,
+  ncomp = NULL,
+  scale = TRUE,
+  scale.block = TRUE,
+  scale.Y = TRUE,
+  threshold = 1e-08
 )
 }
 \arguments{
-\item{X}{Block obtained by horizontally merging all the explanatory blocks of variables.}
+\item{X}{Dataset obtained by horizontally merging all the predictor blocks of variables.}
 
 \item{Y}{Response block of variables.}
 
-\item{group}{Vector indicating the number of variables in each explanatory block.}
+\item{block}{Vector indicating the number of variables in each predictor block.}
 
-\item{algo}{Type of algorithm to use. Either "eigen" (default) or "nipals".}
+\item{name.block}{Names of the predictor blocks of variables (NULL by default).}
 
-\item{ncompprint}{Number of global components to print.
-By default (NULL), all the global components of the analysis are printed.}
+\item{ncomp}{Number of dimensions to compute. By default (NULL), all the global components are extracted.}
 
-\item{scale}{Type of standardization applied to the variables in the explanatory blocks. Either "none" (default) or "sd".
-If scale="sd", each variable in the explanatory blocks is divided by its standard deviation.}
+\item{scale}{Logical, if TRUE (by default) the variables in X are scaled to unit variance (all variables in X are centered anyway).}
 
-\item{scaleY}{Type of standardization applied to the variables in the response block. Either "none" (default) or "sd".
-If scaleY="sd", each variable of the response block is divided by its standard deviation.}
+\item{scale.block}{Logical, if TRUE (by default) each predictor block of variables is divided by the square root of its inertia (Frobenius norm).}
 
-\item{option}{Type of normalization applied to each explanatory block of variables (either "none" or "uniform").
-If option="uniform" (default), each explanatory block of variables is divided by its Frobenius norm.}
+\item{scale.Y}{Logical, if TRUE (by default) then variables in Y are scaled to unit variance (all variables in Y are centered anyway).}
 
-\item{optionY}{Type of normalization applied to the response block of variables (either "none" or "uniform").
-If optionY="uniform" (default), the response block of variables is divided by its Frobenius norm.}
-
-\item{nstart}{Number of random initializations of the vector of Y loadings in case of nipals algorithm (by default 10).}
-
-\item{threshold}{Value used to break the iterative loop (by default 1e-8).}
-
-\item{plotgraph}{Boolean (TRUE/FALSE). If TRUE (default), graphs depicting saliences, scores of individuals, correlations of variables with the global components and contributions of blocks of variables to the determination of global components are displayed.}
-
-\item{axes}{Vector that indicates the plane in which graphs should be depicted (by default the plane formed by the first two global components).}
+\item{threshold}{Convergence threshold}
 }
 \value{
-Returns a list of the following elements:\cr
+\item{optimalcrit}{Numeric vector of the optimal value of the criterion (sum of squared saliences) obtained for each dimension.}
 
-components  :  Numeric vector of length two that gives the number of global components of the analysis and the number of global components to print.
+\item{saliences}{Matrix of the specific weights of each predictor block on the global components, for each dimension.}
 
-optimalcrit  :  Numeric vector that gives the optimal value of the criterion to be maximized for each dimension.
+\item{T.g}{Matrix of normed global components.}
 
-cumexplained   :  Four columns matrix of percentages of total inertia of the explanatory blocks, percentages of inertia of the response block
-explained by the successive global components and their cumulative values.
+\item{Scor.g}{Matrix of global components (scores of individuals).}
 
-explained.X  :  Matrix of percentages of inertia explained for each Xb block.
+\item{W.g}{Matrix of global weights (normed) associated with deflated X.}
 
-explained.Y  :  Matrix of percentages of inertia explained for each Y variable.
+\item{Load.g}{Matrix of global loadings.}
 
-saliences  :  Matrix containing the specific weights of each explanatory block of variables on global components.
+\item{Proj.g}{Matrix of global projection (to compute scores from pretreated X).}
 
-contrib  :  Matrix of contribution of each Xb block to the determination of global components.
+\item{explained.X}{Matrix of percentages of inertia explained in each predictor block.}
 
-T  :  Matrix of global components (scores of individuals).
+\item{cumexplained}{Matrix giving the percentages, and cumulative percentages, of total inertia of X and Y blocks explained by the global components.}
 
-C  :  Compromise matrix (unnormed global components).
+\item{Y}{A list containing un-normed Y components (U), normed Y weights (W.Y) and Y loadings (Load.Y)}
 
-U  :  Matrix of components associated with the response block of variables.
-
-globalcor  :  Matrix of correlation coefficients between the original variables and the global components.
-
-cor.g.b  :  Array that gives the correlation of the global components with their respective block components.
-
-betaY  :  Array of regression coefficients.
-
-\item{Block}{ : Results associated with each block of variables.
-         \itemize{
-               \item {T.b}{ : Array that contains the matrices of block components.}
-               \item {blockcor}{ : List of matrices of correlation coefficients between the original variables of each block of variables and the block components.}
-       }}
+\item{Block}{A list containing block components (T.b) and block weights (W.b)}
 }
 \description{
-MB-WCov applied to multiblock quantitative variables.
+MB-WCov analysis applied to a set of quantitative blocks of variables.
 }
 \examples{
 data(ham)
 X=ham$X
-group=ham$group
+block=ham$block
 Y=ham$Y
-res.mbwcov <- MBWCov(X, Y, group)
-res.mbwcov
+res.mbwcov <- MBWCov(X, Y, block, name.block = names(block))
+summary(res.mbwcov)
+plot(res.mbwcov)
 
 }
 \references{
@@ -105,8 +76,5 @@ E. Tchandao Mangamana, R. Glèlè Kakaï, E.M. Qannari (2021). A general strateg
 Chemometrics and Intelligent Laboratory Systems, 217, 104388.
 }
 \seealso{
-\code{\link{print.MBWCov}}    \code{\link{plot.MBWCov}}    \code{\link{summary.MBWCov}}
-}
-\author{
-Essomanda TCHANDAO MANGAMANA \email{tchanesso@yahoo.fr}, Véronique CARIOU, Evelyne VIGNEAU.
+\code{\link{summary.MBWCov}}    \code{\link{plot.MBWCov}}
 }

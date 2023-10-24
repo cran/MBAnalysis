@@ -2,37 +2,29 @@
 % Please edit documentation in R/summary.ComDim.R
 \name{summary.ComDim}
 \alias{summary.ComDim}
-\title{Summary Results for Common Dimensions analysis (ComDim)}
+\title{Summary of \code{\link{ComDim}} objects}
 \usage{
-\method{summary}{ComDim}(object, nvar = NULL, ncompprint = NULL, digits = 2, ...)
+\method{summary}{ComDim}(object, ...)
 }
 \arguments{
-\item{object}{An object of class \code{ComDim}.}
+\item{object}{An object resulting from \code{\link{ComDim}}.}
 
-\item{nvar}{Number of variables to print. By default (NULL), all the variables are printed.}
-
-\item{ncompprint}{Number of global components to print. By default (NULL), the number of global components printed for the main function ComDim.}
-
-\item{digits}{Number of decimal points (by default 2).}
-
-\item{...}{Further arguments.}
+\item{...}{further arguments passed to or from other methods.}
 }
 \value{
-Returns the percentages of inertia explained by successive global components, their cumulative values, the saliences and the correlations of the original variables with the global components.
+The summary.
 }
 \description{
-Gives key results for ComDim.
+Edits the Cumulative Explained Variance, Block Explained Variance per Dimension and Block Saliences per Dimension of a \code{\link{ComDim}} object.
 }
 \examples{
 data(ham)
 X=ham$X
-group=ham$group
-res.comdim <- ComDim(X, group, plotgraph=FALSE)
+block=ham$block
+res.comdim <- ComDim(X,block,name.block=names(block))
 summary(res.comdim)
+
 }
 \seealso{
-\code{\link{ComDim}}
-}
-\author{
-Essomanda TCHANDAO MANGAMANA \email{tchanesso@yahoo.fr}, Véronique CARIOU, Evelyne VIGNEAU.
+\code{\link{plot.ComDim}}
 }

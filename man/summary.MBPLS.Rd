@@ -2,40 +2,30 @@
 % Please edit documentation in R/summary.MBPLS.R
 \name{summary.MBPLS}
 \alias{summary.MBPLS}
-\title{Summary Results for Multiblock Partial Least Squares (MB-PLS) regression}
+\title{Summary of \code{\link{MBPLS}} objects}
 \usage{
-\method{summary}{MBPLS}(object, nvar = NULL, ncompprint = NULL, digits = 2, ...)
+\method{summary}{MBPLS}(object, ...)
 }
 \arguments{
-\item{object}{An object of class \code{MBPLS}.}
+\item{object}{An object resulting from \code{\link{MBPLS}}.}
 
-\item{nvar}{Number of variables to print. By default (NULL), all the variables are printed.}
-
-\item{ncompprint}{Number of global components to print.
-By default (NULL), the number of global components printed for the main function MBPLS.}
-
-\item{digits}{Number of decimal points (by default 2).}
-
-\item{...}{Further arguments.}
+\item{...}{further arguments passed to or from other methods.}
 }
 \value{
-Returns the percentages of inertia explained by successive global components (for both X and Y), their cumulative values
-and the correlations of the variables with the global components.
+The summary.
 }
 \description{
-Gives key results for MB-PLS.
+Edits the Cumulative Explained Variance, Block Explained Variance per Dimension and Block Saliences per Dimension of a \code{\link{MBPLS}} object.
 }
 \examples{
 data(ham)
 X=ham$X
-group=ham$group
+block=ham$block
 Y=ham$Y
-res.mbpls <- MBPLS(X, Y, group, plotgraph=FALSE)
+res.mbpls <- MBPLS(X, Y, block, name.block = names(block))
 summary(res.mbpls)
+
 }
 \seealso{
-\code{\link{MBPLS}}
-}
-\author{
-Essomanda TCHANDAO MANGAMANA \email{tchanesso@yahoo.fr}, Véronique CARIOU, Evelyne VIGNEAU.
+\code{\link{plot.MBPLS}}
 }

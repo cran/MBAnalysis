@@ -8,11 +8,9 @@
 ## @param tab A dataset for which the inertia should be computed.
 
 ## @return returns the total inertia of a dataset.
-
-
 inertie <-function(tab) {
   tab<- scale(tab, scale=FALSE)
   tab<-as.matrix(tab)
-  V<-t(tab)%*%tab
+  V<-tcrossprod(tab)
   sum(diag(V))
 }

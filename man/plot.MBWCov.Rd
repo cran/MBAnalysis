@@ -2,89 +2,34 @@
 % Please edit documentation in R/plot.MBWCov.R
 \name{plot.MBWCov}
 \alias{plot.MBWCov}
-\title{Main Graphs for Multiblock Weighted Covariate analysis (MB-WCov)}
+\title{Default plots for \code{\link{MBWCov}} objects}
 \usage{
-\method{plot}{MBWCov}(
-  x,
-  axes = c(1, 2),
-  graphtype = c("saliences", "globalscores", "blockscores", "globalcor", "blockcor",
-    "explY", "cumexplY", "explX", "cumexplX", "crit", "contrib"),
-  select = NULL,
-  max.overlaps = 20,
-  xlim = NULL,
-  ylim = NULL,
-  title = NULL,
-  color = NULL,
-  ...
-)
+\method{plot}{MBWCov}(x, axes = c(1, 2), size = 2.25, ...)
 }
 \arguments{
-\item{x}{An object of class \code{MBWCov}.}
+\item{x}{An object resulting from \code{\link{MBWCov}}.}
 
-\item{axes}{A vector of length 2 which specifies the global components to plot (by default the first two).}
+\item{axes}{Which dimensions should be plotted?}
 
-\item{graphtype}{Type of graph to plot. Either "saliences", "globalscores", "blockscores","globalcor","blockcor", "explY", "cumexplY", "explX", "cumexplX", "crit" or "contrib".
-Refer to the details section.}
+\item{size}{The overall size of labels, points, etc.}
 
-\item{select}{Selection of elements to plot (by default, select=NULL). Refer to the details section.}
-
-\item{max.overlaps}{Exclude text labels that overlap too many things (by default, 20).}
-
-\item{xlim}{Range for the plotted 'x' values.}
-
-\item{ylim}{Range for the plotted 'y' values.}
-
-\item{title}{Title of the graph to draw.}
-
-\item{color}{Color for the plot.}
-
-\item{...}{Further arguments.}
+\item{...}{further arguments passed to or from other methods.}
 }
 \value{
-Returns graphs showing relationships between the explanatory blocks of variables, the projection of individuals in both global and block components, the correlations of variables with the global and block components,
-the percentages of inertia of both Y block and X blocks explained by the global components and their cumulative values, the values of the maximization criterion and the contributions of the blocks
-to the determination of global components.
+The default plots.
 }
 \description{
-Plot the main graphs for MB-WCov.
-}
-\details{
-The arguments graphtype and select are used as follow.\cr
-If graphtype="saliences", the relationships between blocks of variables are shown.\cr
-If select=NULL, all the blocks are shown, otherwise, only the selected ones are shown.\cr
-If graphtype="globalscores", individuals are projected on the space formed by the global components.\cr
-In this case, if for example, select=NULL, all the individuals are plotted. However, if select=5, only the first five individuals are plotted.\cr
-If graphtype="blockscores", individuals are projected on the space formed by the block components.\cr
-If select=NULL, individuals of each block are plotted on separate figures.\cr
-If select=c(1,3), individuals of blocks 1 and 3 are plotted on separate figures.\cr
-If graphtype="globalcor", correlations of original variables with the global components are depicted.\cr
-If select=NULL, correlations of the variables of all the blocks are plotted on the same figure.\cr
-If select=c(1,3), correlations of the variables of blocks 1 and 3 are plotted.\cr
-If graphtype="blockcor", correlations of original variables with the block components are depicted.\cr
-If select=NULL, correlations of the variables of each block are plotted on seperate figures.\cr
-If select=c(1,3), correlations of the variables of blocks 1 and 3 are plotted.\cr
-If graphtype="explY", percentages of inertia of Y block explained by the global components are drawn.\cr
-If graphtype="cumexplY", cumulative percentages of inertia of Y block explained by the global components are drawn.\cr
-If graphtype="explX", percentages of inertia of X blocks explained by the global components are drawn.\cr
-If graphtype="cumexplX", cumulative percentages of inertia of X blocks explained by the global components are drawn.\cr
-graphtype="crit" plots the values of the maximization criterion.\cr
-graphtype="contrib" depicts the contribution of each block of variables to the determination of the global components.\cr
-For graphtype="explY", "cumexplY", "explX", "cumexplX", "crit" and "contrib", if select=NULL, all the dimensions are plotted. \cr
-But if for example, select=5, only the first five dimensions are plotted.\cr
+Successively performs \code{\link{MBplotScores}}, \code{\link{MBplotVars}} and \code{\link{MBplotBlocks}} with the default values of parameters but axes and size.
 }
 \examples{
 data(ham)
 X=ham$X
+block=ham$block
 Y=ham$Y
-group=ham$group
-res.mbwcov <- MBWCov(X, Y, group, plotgraph=FALSE)
-plot(res.mbwcov, graphtype="saliences")
-plot(res.mbwcov, graphtype="globalscores")
+res.mbwcov <- MBWCov(X, Y, block, name.block = names(block))
+plot(res.mbwcov)
 
 }
 \seealso{
-\code{\link{MBWCov}}
-}
-\author{
-Essomanda TCHANDAO MANGAMANA \email{tchanesso@yahoo.fr}, Véronique CARIOU, Evelyne VIGNEAU.
+\code{\link{MBplotScores}} \code{\link{MBplotVars}} \code{\link{MBplotBlocks}}
 }

@@ -2,40 +2,30 @@
 % Please edit documentation in R/summary.MBWCov.R
 \name{summary.MBWCov}
 \alias{summary.MBWCov}
-\title{Summary Results for Multiblock Weighted Covariate analysis (MB-WCov)}
+\title{Summary of \code{\link{MBWCov}} objects}
 \usage{
-\method{summary}{MBWCov}(object, nvar = NULL, ncompprint = NULL, digits = 2, ...)
+\method{summary}{MBWCov}(object, ...)
 }
 \arguments{
-\item{object}{An object of class \code{MBWCov}.}
+\item{object}{An object resulting from \code{\link{MBWCov}}.}
 
-\item{nvar}{Number of variables to print. By default (NULL), all the variables are printed.}
-
-\item{ncompprint}{Number of global components to print.
-By default (NULL), the number of global components printed for the main function MBWCov.}
-
-\item{digits}{Number of decimal points (by default 2).}
-
-\item{...}{Further arguments.}
+\item{...}{further arguments passed to or from other methods.}
 }
 \value{
-Returns the percentages of inertia explained by successive global components (for both X and Y), their cumulative values,
-the saliences and the correlations of the variables with the global components.
+The summary.
 }
 \description{
-Gives key results for MB-WCov.
+Edits the Cumulative Explained Variance, Block Explained Variance per Dimension and Block Saliences per Dimension of a \code{\link{MBWCov}} object.
 }
 \examples{
 data(ham)
 X=ham$X
-group=ham$group
+block=ham$block
 Y=ham$Y
-res.mbwcov <- MBWCov(X, Y, group, plotgraph=FALSE)
+res.mbwcov <- MBWCov(X, Y, block, name.block = names(block))
 summary(res.mbwcov)
+
 }
 \seealso{
-\code{\link{MBWCov}}
-}
-\author{
-Essomanda TCHANDAO MANGAMANA \email{tchanesso@yahoo.fr}, Véronique CARIOU, Evelyne VIGNEAU.
+\code{\link{plot.MBWCov}}
 }

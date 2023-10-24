@@ -9,7 +9,7 @@ An object of class \code{"list"} with 8 products,  3 blocks of X variables (Flav
 \describe{
 \item{X}{dataframe of 8 products and 25 variables structured into 3 blocks: Flavor (11 variables), Aroma (8 variables) and Texture (6 variables)}
 \item{Y}{dataframe of 8 products and 6 vectors of hedonic values corresponding to consumers' segmentation}
-\item{group}{vector indicating the number of variables per block}
+\item{block}{vector indicating the number of variables per block}
 }
 }
 \usage{
@@ -22,7 +22,7 @@ Case study pertaining to the sensory evaluation of eight American dry-cured ham 
 data(ham)
 ham$X
 ham$Y
-ham$group
+ham$block
 }
 \references{
 M.D. Guardia, A.P. Aguiar, A. Claret, J. Arnau & L. Guerrero (2010). Sensory characterization of dry-cured ham using free-choice profiling. Food Quality and Preference, 21(1), 148-155.
