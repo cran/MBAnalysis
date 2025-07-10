@@ -25,9 +25,7 @@
 #' @export
 
 plot.MBPLS=function(x,axes=c(1,2),size=2.25,...){
-  if (!inherits(x, c("MBPLS"))){
-    stop("class(x) must be MBPLS")
-  }
+  
   if (is.integer(axes) | is.numeric(axes)){
     if (length(axes)!=2){
       stop("length(axes) must be 2")

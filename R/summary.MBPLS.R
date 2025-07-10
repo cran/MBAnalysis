@@ -20,9 +20,7 @@
 #' @export
 
 summary.MBPLS=function(object,...){
-  if (!inherits(object, c("MBPLS"))){
-    stop("class(object) must be MBPLS")
-  }
+ 
   cat("################## Cumulative Explained Variance ###########################")
   cat("\n")
   cat("\n")

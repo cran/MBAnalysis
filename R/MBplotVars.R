@@ -167,12 +167,12 @@ MBplotVars=function(res,axes=c(1,2),which=ifelse(res$call$scale,"correlation","l
     if (!is.null(res$Y)){
       mat1=res$Scor.g[,axes]
       mat2=as.matrix(XY)[,vars.selected,drop=FALSE]
-      calc.coord=round(solve(crossprod(mat1)),16)%*%crossprod(mat1,mat2)
+      calc.coord=round(chol2inv(chol(crossprod(mat1))),12)%*%crossprod(mat1,mat2)
       matplot=t(calc.coord)
     }else{
       mat1=res$Scor.g[,axes]
       mat2=as.matrix(pretreatment(res))[,vars.selected,drop=FALSE]
-      calc.coord=round(solve(crossprod(mat1)),12)%*%crossprod(mat1,mat2)
+      calc.coord=round(chol2inv(chol(crossprod(mat1))),12)%*%crossprod(mat1,mat2)
       matplot=t(calc.coord)
     }
   }else{

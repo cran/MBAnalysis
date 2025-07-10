@@ -7,7 +7,7 @@
 ComDim(
   X,
   block,
-  name.block,
+  name.block = NULL,
   ncomp = NULL,
   scale = TRUE,
   scale.block = TRUE,

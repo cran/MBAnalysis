@@ -19,9 +19,7 @@
 #' @export
 
 summary.ComDim=function(object,...){
-  if (!inherits(object, c("ComDim"))){
-    stop("class(object) must be ComDim")
-  }
+ 
   cat("################## Cumulative Explained Variance ###########################")
   cat("\n")
   cat("\n")

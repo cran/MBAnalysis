@@ -57,7 +57,7 @@ MBWCov <- function(X, Y, block, name.block= NULL, ncomp=NULL, scale=TRUE, scale.
     stop("Y must have rows (i.e. nrow(Y) different from NULL)")
   }
 
-  if (any(is.na(X)) | any(is.na(Y))){      # to be modified if missing values allowed
+  if (anyNA(X) | anyNA(Y)){      # to be modified if missing values allowed
     stop("No NA values are allowed")
   }
   if (sum(block) != ncol(X)){
@@ -176,11 +176,11 @@ MBWCov <- function(X, Y, block, name.block= NULL, ncomp=NULL, scale=TRUE, scale.
   # 2. Required parameters and data preparation
   # ---------------------------------------------------------------------------
   Xinput        <- X
-  Xscale$mean   <- apply(X, 2, mean)
+  Xscale$mean   <- colMeans(X)
   X             <- sweep(X, 2, Xscale$mean, "-")              # Default centering X
 
   Yinput        <- Y
-  Yscale$mean   <- apply(Y,2,mean)
+  Yscale$mean   <- colMeans(Y)
   Y             <- sweep(Y, 2, Yscale$mean, "-")              # Default centering Y
 
   if (scale==FALSE) {                                        # No scaling X
@@ -341,7 +341,7 @@ MBWCov <- function(X, Y, block, name.block= NULL, ncomp=NULL, scale=TRUE, scale.
   Load.Y=t(t(Load.Y)/colSums(Scor.g^2))
 
   # Global Projection
-  Proj.g <- W.g %*% solve(crossprod(Load.g,W.g),tol=1e-300)      # Weights that take into account the deflation procedure
+  Proj.g <- W.g %*% solve(crossprod(Load.g,W.g))      # Weights that take into account the deflation procedure
 
 
   # ---------------------------------------------------------------------------

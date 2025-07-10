@@ -20,9 +20,7 @@
 #' @export
 
 summary.MBWCov=function(object,...){
-  if (!inherits(object, c("MBWCov"))){
-    stop("class(object) must be MBWCov")
-  }
+  
   cat("################## Cumulative Explained Variance ###########################")
   cat("\n")
   cat("\n")

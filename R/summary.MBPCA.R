@@ -19,9 +19,7 @@
 #' @export
 
 summary.MBPCA=function(object,...){
-  if (!inherits(object, c("MBPCA"))){
-    stop("class(object) must be MBPCA")
-  }
+ 
   cat("################## Cumulative Explained Variance ###########################")
   cat("\n")
   cat("\n")

@@ -31,5 +31,5 @@ predict(res.mbpls)
 
 }
 \seealso{
-\code{\link{Beta}}    \code{\link{MBValidation}}
+\code{\link{coef.MBPLS}}    \code{\link{MBValidation}}
 }

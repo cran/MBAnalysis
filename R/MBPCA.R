@@ -44,7 +44,7 @@ MBPCA <- function(X, block, name.block= NULL, ncomp=NULL, scale=TRUE, scale.bloc
   # 0. Preliminary tests
   # ---------------------------------------------------------------------------
 
-  if (any(is.na(X))){     # to be modified if missing values allowed
+  if (anyNA(X)){     # to be modified if missing values allowed
     stop("No NA values are allowed")
   }
   if (sum(block) != ncol(X)){
@@ -144,7 +144,7 @@ MBPCA <- function(X, block, name.block= NULL, ncomp=NULL, scale=TRUE, scale.bloc
   # 2. Required parameters and data preparation
   # ---------------------------------------------------------------------------
   Xinput        <-X
-  Xscale$mean   <- apply(X, 2, mean)
+  Xscale$mean   <- colMeans(X)
   X             <-sweep(X, 2, Xscale$mean, "-")              # Default centering
 
   if (scale==FALSE) {                                        # No scaling
@@ -234,7 +234,7 @@ MBPCA <- function(X, block, name.block= NULL, ncomp=NULL, scale=TRUE, scale.bloc
   if (ncomp==1) {
     Scor.g=T.g*sqrt(colSums(LAMBDA))
   }  else {
-    Scor.g=T.g%*%sqrt(diag(colSums(LAMBDA)))
+    Scor.g=T.g%*%diag(sqrt(colSums(LAMBDA)))
   }
   dimnames(Scor.g) <- dimnames(T.g)    # Unnormed global components
 
@@ -243,7 +243,7 @@ MBPCA <- function(X, block, name.block= NULL, ncomp=NULL, scale=TRUE, scale.bloc
   Load.g=t(t(Load.g)/colSums(Scor.g^2))
 
   # Global Projection
-  Proj.g <- W.g %*% solve(crossprod(Load.g,W.g),tol=1e-300)      # Weights that take into account the deflation procedure
+  Proj.g <- W.g %*% solve(crossprod(Load.g,W.g))      # Weights that take into account the deflation procedure
 
 
 

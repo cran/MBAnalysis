@@ -9,7 +9,7 @@
 #'
 #' @return A matrix of predicted Y values where each row corresponds to an observation and each column corresponds to a Y variable.
 #'
-#' @seealso \code{\link{Beta}}    \code{\link{MBValidation}}
+#' @seealso \code{\link{coef.MBWCov}}    \code{\link{MBValidation}}
 #'
 #' @examples
 #' data(ham)
@@ -22,9 +22,7 @@
 #' @export
 
 predict.MBWCov=function(object,newdata=object$call$X,ncomp=object$call$ncomp,...){
-  if (!inherits(object, c("MBWCov"))){
-    stop("class(object) must be MBWCov")
-  }
+
   if (!is.matrix(newdata) & !is.data.frame(newdata)){
     stop("class(newdata) must be matrix or data.frame")
   }
@@ -44,7 +42,7 @@ predict.MBWCov=function(object,newdata=object$call$X,ncomp=object$call$ncomp,...
   newdata=as.matrix(newdata)
   predictor.pretr=sweep(newdata,2,object$call$Xscale$mean,"-")
   predictor.pretr=sweep(predictor.pretr,2,object$call$Xscale$scale,"/")
-  beta=Beta(object,ncomp)
+  beta=coef.MBWCov(object,ncomp)
   Ypred.pretr=predictor.pretr%*%beta
   Ypred=sweep(Ypred.pretr,2,object$call$Yscale$scale,"*")
   Ypred=sweep(Ypred,2,object$call$Yscale$mean,"+")

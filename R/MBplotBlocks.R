@@ -159,7 +159,13 @@ MBplotBlocks=function(res,which="explained.blocks&Y",axes=c(1,2),blocks.axes=1:m
         Xb=pretreatment(res)[,(1+sum(res$call$size.block[(1:(b-1))])):(res$call$size.block[b]+sum(res$call$size.block[(1:(b-1))]))]
       }
       udv=svd(tcrossprod(Xb),nu=max(blocks.axes),nv=max(blocks.axes))
-      matplot[matplot$block==res$call$name.block[b],1:2]=cor(udv$u[,blocks.axes,drop=FALSE],res$Scor.g[,axes])
+      toaddmatplot=cor(udv$u[,blocks.axes,drop=FALSE],res$Scor.g[,axes])
+      if (any(udv$d[1:max(blocks.axes)]<1e-12)){
+        ou.zero=which(udv$d[1:max(blocks.axes)]<1e-12)
+        toaddmatplot[ou.zero,]=0
+        warning("Blocks axes with null singular values (<1e-12) has received null correlations with global axes")
+      }
+      matplot[matplot$block==res$call$name.block[b],1:2]=toaddmatplot
     }
     pmin=-1.05
     pmax=1.05
@@ -177,6 +183,7 @@ MBplotBlocks=function(res,which="explained.blocks&Y",axes=c(1,2),blocks.axes=1:m
     p = ggplot(as.data.frame(matplot), aes(x = matplot[,1], y = matplot[,2]),color= matplot[,3]) + theme_bw()
     p = p + xlim(pmin, pmax) + ylim(pmin, pmax) + xlab(hlab) + ylab(vlab) + ggtitle(title)
     p = p + annotate("path",x=0+cos(seq(0,2*pi,length.out=100)),y=0+sin(seq(0,2*pi,length.out=100)),linewidth=1)
+    p = p + annotate("path",x=0+sqrt(0.50)*cos(seq(0,2*pi,length.out=100)),y=0+sqrt(0.50)*sin(seq(0,2*pi,length.out=100)),linewidth=1)
     p = p + theme(axis.title.x = element_text(size = 5*size, face = "bold"),axis.title.y = element_text(size = 5*size, face = "bold"),plot.title = element_text(hjust = 0.5, face = "bold",size = 7*size),axis.text = element_text(size=3*size))
     p = p + geom_hline(yintercept = 0, linetype = "dashed",linewidth = 1) + geom_vline(xintercept = 0,linetype = "dashed",linewidth = 1)
     p = p + geom_segment(data = as.data.frame(matplot),aes(x = 0,y = 0, xend = matplot[, 1], yend = matplot[, 2],colour = matplot[,3]),arrow = arrow(length = unit(0.3, "cm"), type = "open"), linewidth = 1)

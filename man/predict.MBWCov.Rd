@@ -31,5 +31,5 @@ predict(res.mbwcov)
 
 }
 \seealso{
-\code{\link{Beta}}    \code{\link{MBValidation}}
+\code{\link{coef.MBWCov}}    \code{\link{MBValidation}}
 }

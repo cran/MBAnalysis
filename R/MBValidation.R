@@ -41,9 +41,18 @@
 #' @export
 
 MBValidation=function(res,ncomp.max=min(res$call$ncomp,nrow(res$call$X)-2,ncol(X)),method="LOO",nboot=1000,graph=TRUE,size.graph=2.25){
-
   if (!inherits(res, c("MBPLS","MBWCov"))){
     stop("class(res) must be MBPLS or MBWCov")
+  }
+  if (res$call$ncomp==0){
+    stop("res$call$ncomp must be strictly larger than 0")
+  }
+  if (is.numeric(ncomp.max) | is.integer(ncomp.max)){
+    if (ncomp.max<=0){
+      stop("ncomp.max must be strictly larger than 0")
+    }
+  }else{
+    stop("class(ncomp.max) must be numeric or integer")
   }
   if (is.character(method)){
     if (!method%in%c("LOO","OOB")){
@@ -54,8 +63,8 @@ MBValidation=function(res,ncomp.max=min(res$call$ncomp,nrow(res$call$X)-2,ncol(X
   }
   if (method=="OOB"){
     if (is.numeric(nboot) | is.integer(nboot)){
-      if (nboot<100){
-        stop("nboot must be larger than or equal to 100")
+      if (nboot<30){
+        stop("nboot must be larger than or equal to 30")
       }
     }else{
       stop("class(nboot) must be numeric or integer")
@@ -82,20 +91,17 @@ MBValidation=function(res,ncomp.max=min(res$call$ncomp,nrow(res$call$X)-2,ncol(X
     if (method=="OOB"){
       maxh.oob=qbinom(1-(1/(nboot*10)),nrow(X),1-exp(-1),lower.tail = FALSE)
       if (ncomp.max>maxh.oob & maxh.oob<=ncol(X)){
-        warning(paste("Given nrow(X) and required nboot for OOB validation, method OOB should be performed with ncomp.max lower than or equal to ",maxh.oob,"\n"," Validation has been performed using method = LOO and considering ncomp.max = ",(nrow(X)-2),sep=""))
-        method="LOO"
-        ncomp.max=(nrow(X)-2)
+        warning(paste("Given nrow(X) and required nboot for OOB validation, method OOB should be performed with ncomp.max lower than or equal to ",maxh.oob,"\n"," Validation has been performed using method = OOB and considering ncomp.max = ",maxh.oob,sep=""))
+        ncomp.max=maxh.oob
       }
     }
-    if (method=="LOO" & nrow(X)<=ncol(X) & ncomp.max>(nrow(X)-2)){
-      warning(paste("Given nrow(X)<ncol(X) and required LOO validation, ncomp.max must be lower than or equal to ",(nrow(X)-2),"\n"," LOO has been performed with ncomp.max = ",(nrow(X)-2),sep=""))
+    if (method=="LOO" & (nrow(X)-2)<=ncol(X) & ncomp.max>(nrow(X)-2)){
+      warning(paste("Given nrow(X)<=ncol(X) and required LOO validation, ncomp.max must be lower than or equal to ",(nrow(X)-2),"\n"," LOO has been performed with ncomp.max = ",(nrow(X)-2),sep=""))
       ncomp.max=(nrow(X)-2)
     }
   }else{
     stop("class(ncomp.max) must be numeric or integer")
   }
-
-
   if (method=="LOO"){
     error.stock=matrix(0,nrow(X),ncomp.max+1)
     dimnames(error.stock)=list(paste("loo",1:nrow(X),sep="."),paste("Dim",0:ncomp.max,sep="."))
@@ -173,7 +179,7 @@ MBValidation=function(res,ncomp.max=min(res$call$ncomp,nrow(res$call$X)-2,ncol(X
       setTxtProgressBar(pb, boot)
     }
   }
-  avg=apply(error.stock,2,mean,na.rm=TRUE)
+  avg=colMeans(error.stock,na.rm=TRUE)
   if (method=="LOO"){
     std.error=sqrt(apply(error.stock,2,var,na.rm=TRUE)/sum(!is.na(error.stock[,1])))
   }else{
