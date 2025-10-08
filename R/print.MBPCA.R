@@ -1,4 +1,4 @@
-#' Print of \code{\link{MBPCA}} objects
+#' Print of \code{\link{MBPCA}} Objects
 #'
 #' @param x An object resulting from \code{\link{MBPCA}}.
 #' @param ... further arguments passed to or from other methods.

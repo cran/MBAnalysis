@@ -1,4 +1,4 @@
-#' Summary of \code{\link{MBWCov}} objects
+#' Summary of \code{\link{MBWCov}} Objects
 #'
 #' Edits the Cumulative Explained Variance, Block Explained Variance per Dimension and Block Saliences per Dimension of a \code{\link{MBWCov}} object.
 #'
@@ -34,5 +34,8 @@ summary.MBWCov=function(object,...){
   cat("################## Block Saliences per Dimension ###########################")
   cat("\n")
   cat("\n")
-  print(object$saliences)
+  aux=object$saliences
+  aux=format(aux,digits=2)
+  re=matrix(as.numeric(aux),nrow=nrow(aux)) ; dimnames(re)=dimnames(aux)
+  print(re)
 }

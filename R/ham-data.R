@@ -1,4 +1,4 @@
-#' Ham data
+#' Ham Data
 #'
 #' @description Case study pertaining to the sensory evaluation of eight American dry-cured ham products, performed by a panel of trained assessors.
 #'

@@ -2,7 +2,7 @@
 % Please edit documentation in R/MBWCov.R
 \name{MBWCov}
 \alias{MBWCov}
-\title{Multiblock Weighted Covariate analysis (MB-WCov)}
+\title{Multiblock Weighted Covariate Analysis}
 \usage{
 MBWCov(
   X,

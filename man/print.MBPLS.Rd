@@ -2,7 +2,7 @@
 % Please edit documentation in R/print.MBPLS.R
 \name{print.MBPLS}
 \alias{print.MBPLS}
-\title{Print of \code{\link{MBPLS}} objects}
+\title{Print of \code{\link{MBPLS}} Objects}
 \usage{
 \method{print}{MBPLS}(x, ...)
 }
@@ -12,7 +12,7 @@
 \item{...}{further arguments passed to or from other methods.}
 }
 \description{
-Print of \code{\link{MBPLS}} objects
+Print of \code{\link{MBPLS}} Objects
 }
 \examples{
 data(ham)

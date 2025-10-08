@@ -2,7 +2,7 @@
 % Please edit documentation in R/summary.MBPLS.R
 \name{summary.MBPLS}
 \alias{summary.MBPLS}
-\title{Summary of \code{\link{MBPLS}} objects}
+\title{Summary of \code{\link{MBPLS}} Objects}
 \usage{
 \method{summary}{MBPLS}(object, ...)
 }

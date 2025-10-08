@@ -3,7 +3,7 @@
 \docType{data}
 \name{ham}
 \alias{ham}
-\title{Ham data}
+\title{Ham Data}
 \format{
 An object of class \code{"list"} with 8 products,  3 blocks of X variables (Flavor, Aroma, Texture) and 1 block of Y variables corresponding to hedonic measures:
 \describe{

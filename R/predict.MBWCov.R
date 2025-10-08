@@ -1,4 +1,4 @@
-#' Prediction from MBWCov models
+#' Prediction with MBWCov
 #'
 #' Computes predictions of Y from \code{\link{MBWCov}} using calibration X (default) or new X observations.
 #'

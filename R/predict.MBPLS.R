@@ -1,4 +1,4 @@
-#' Prediction from MBPLS models
+#' Prediction with MBPLS
 #'
 #' Computes predictions of Y from \code{\link{MBPLS}} using calibration X (default) or new X observations.
 #'

@@ -1,4 +1,4 @@
-#' Default plots for \code{\link{MBPLS}} objects
+#' Default Plots for \code{\link{MBPLS}}
 #'
 #' Successively performs \code{\link{MBplotScores}}, \code{\link{MBplotVars}} and \code{\link{MBplotBlocks}} with the default values of parameters but axes and size.
 #'

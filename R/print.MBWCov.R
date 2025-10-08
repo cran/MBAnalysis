@@ -1,4 +1,4 @@
-#' Print of \code{\link{MBWCov}} objects
+#' Print of \code{\link{MBWCov}} Objects
 #'
 #' @param x An object resulting from \code{\link{MBWCov}}.
 #' @param ... further arguments passed to or from other methods.

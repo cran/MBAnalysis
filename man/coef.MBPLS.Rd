@@ -2,7 +2,7 @@
 % Please edit documentation in R/coef.MBPLS.R
 \name{coef.MBPLS}
 \alias{coef.MBPLS}
-\title{Regression coefficients of MBPLS models}
+\title{Regression Coefficients of MBPLS}
 \usage{
 \method{coef}{MBPLS}(object, ncomp = object$call$ncomp, ...)
 }

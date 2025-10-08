@@ -2,7 +2,7 @@
 % Please edit documentation in R/print.MBPCA.R
 \name{print.MBPCA}
 \alias{print.MBPCA}
-\title{Print of \code{\link{MBPCA}} objects}
+\title{Print of \code{\link{MBPCA}} Objects}
 \usage{
 \method{print}{MBPCA}(x, ...)
 }
@@ -12,7 +12,7 @@
 \item{...}{further arguments passed to or from other methods.}
 }
 \description{
-Print of \code{\link{MBPCA}} objects
+Print of \code{\link{MBPCA}} Objects
 }
 \examples{
 data(ham)

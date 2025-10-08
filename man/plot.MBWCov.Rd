@@ -2,7 +2,7 @@
 % Please edit documentation in R/plot.MBWCov.R
 \name{plot.MBWCov}
 \alias{plot.MBWCov}
-\title{Default plots for \code{\link{MBWCov}} objects}
+\title{Default Plots for \code{\link{MBWCov}}}
 \usage{
 \method{plot}{MBWCov}(x, axes = c(1, 2), size = 2.25, ...)
 }

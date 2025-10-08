@@ -2,7 +2,7 @@
 % Please edit documentation in R/plot.MBPCA.R
 \name{plot.MBPCA}
 \alias{plot.MBPCA}
-\title{Default plots for \code{\link{MBPCA}} objects}
+\title{Default Plots for \code{\link{MBPCA}}}
 \usage{
 \method{plot}{MBPCA}(x, axes = c(1, 2), size = 2.25, ...)
 }

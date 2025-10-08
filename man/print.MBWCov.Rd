@@ -2,7 +2,7 @@
 % Please edit documentation in R/print.MBWCov.R
 \name{print.MBWCov}
 \alias{print.MBWCov}
-\title{Print of \code{\link{MBWCov}} objects}
+\title{Print of \code{\link{MBWCov}} Objects}
 \usage{
 \method{print}{MBWCov}(x, ...)
 }
@@ -12,7 +12,7 @@
 \item{...}{further arguments passed to or from other methods.}
 }
 \description{
-Print of \code{\link{MBWCov}} objects
+Print of \code{\link{MBWCov}} Objects
 }
 \examples{
 data(ham)

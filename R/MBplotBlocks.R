@@ -1,4 +1,4 @@
-#' Customizable plots of blocks related information
+#' Customizable Plots of Blocks
 #'
 #' Plots blocks related information of \code{\link{MBPCA}}, \code{\link{ComDim}}, \code{\link{MBPLS}} or \code{\link{MBWCov}} with several options of customization.
 #'

@@ -2,7 +2,7 @@
 % Please edit documentation in R/predict.MBPLS.R
 \name{predict.MBPLS}
 \alias{predict.MBPLS}
-\title{Prediction from MBPLS models}
+\title{Prediction with MBPLS}
 \usage{
 \method{predict}{MBPLS}(object, newdata = object$call$X, ncomp = object$call$ncomp, ...)
 }

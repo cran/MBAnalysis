@@ -2,7 +2,7 @@
 % Please edit documentation in R/print.ComDim.R
 \name{print.ComDim}
 \alias{print.ComDim}
-\title{Print of \code{\link{ComDim}} objects}
+\title{Print of \code{\link{ComDim}} Objects}
 \usage{
 \method{print}{ComDim}(x, ...)
 }
@@ -12,7 +12,7 @@
 \item{...}{further arguments passed to or from other methods.}
 }
 \description{
-Print of \code{\link{ComDim}} objects
+Print of \code{\link{ComDim}} Objects
 }
 \examples{
 data(ham)

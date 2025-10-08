@@ -2,7 +2,7 @@
 % Please edit documentation in R/plot.ComDim.R
 \name{plot.ComDim}
 \alias{plot.ComDim}
-\title{Default plots for \code{\link{ComDim}} objects}
+\title{Default Plots for \code{\link{ComDim}}}
 \usage{
 \method{plot}{ComDim}(x, axes = c(1, 2), size = 2.25, ...)
 }

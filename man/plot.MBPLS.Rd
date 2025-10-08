@@ -2,7 +2,7 @@
 % Please edit documentation in R/plot.MBPLS.R
 \name{plot.MBPLS}
 \alias{plot.MBPLS}
-\title{Default plots for \code{\link{MBPLS}} objects}
+\title{Default Plots for \code{\link{MBPLS}}}
 \usage{
 \method{plot}{MBPLS}(x, axes = c(1, 2), size = 2.25, ...)
 }

@@ -1,4 +1,4 @@
-#' Cross-Validation of MBPLS or MBWCov models
+#' Cross-Validation for MBPLS or MBWCov
 #'
 #' Computes MSEP and corresponding standard error based on Leave One Out (LOO) or Out Of Bag (OOB) Cross-Validation (CV) by number of components of a MBPLS or MBWCov model from \code{\link{MBPLS}} or \code{\link{MBWCov}}.
 #'

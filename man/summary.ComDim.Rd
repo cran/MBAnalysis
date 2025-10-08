@@ -2,7 +2,7 @@
 % Please edit documentation in R/summary.ComDim.R
 \name{summary.ComDim}
 \alias{summary.ComDim}
-\title{Summary of \code{\link{ComDim}} objects}
+\title{Summary of \code{\link{ComDim}} Objects}
 \usage{
 \method{summary}{ComDim}(object, ...)
 }

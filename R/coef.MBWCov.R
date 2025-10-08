@@ -1,4 +1,4 @@
-#' Regression coefficients of MBWCov models
+#' Regression Coefficients of MBWCov
 #'
 #' Computes regression coefficients from \code{\link{MBWCov}}.
 #'

@@ -2,7 +2,7 @@
 % Please edit documentation in R/MBValidation.R
 \name{MBValidation}
 \alias{MBValidation}
-\title{Cross-Validation of MBPLS or MBWCov models}
+\title{Cross-Validation for MBPLS or MBWCov}
 \usage{
 MBValidation(
   res,

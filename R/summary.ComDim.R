@@ -1,4 +1,4 @@
-#' Summary of \code{\link{ComDim}} objects
+#' Summary of \code{\link{ComDim}} Objects
 #'
 #' Edits the Cumulative Explained Variance, Block Explained Variance per Dimension and Block Saliences per Dimension of a \code{\link{ComDim}} object.
 #'
@@ -33,5 +33,8 @@ summary.ComDim=function(object,...){
   cat("################## Block Saliences per Dimension ###########################")
   cat("\n")
   cat("\n")
-  print(object$saliences)
+  aux=object$saliences
+  aux=format(aux,digits=2)
+  re=matrix(as.numeric(aux),nrow=nrow(aux)) ; dimnames(re)=dimnames(aux)
+  print(re)
 }

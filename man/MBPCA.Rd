@@ -2,7 +2,7 @@
 % Please edit documentation in R/MBPCA.R
 \name{MBPCA}
 \alias{MBPCA}
-\title{Multiblock Principal Components Analysis (MB-PCA)}
+\title{Multiblock Principal Components Analysis}
 \usage{
 MBPCA(
   X,

@@ -1,4 +1,4 @@
-#' Multiblock Partial Least Squares (MB-PLS) regression
+#' Multiblock Partial Least Squares Regression
 #'
 #' MB-PLS regression applied to a set of quantitative blocks of variables.
 #'

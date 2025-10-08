@@ -1,4 +1,4 @@
-#' Print of \code{\link{MBPLS}} objects
+#' Print of \code{\link{MBPLS}} Objects
 #'
 #' @param x An object resulting from \code{\link{MBPLS}}.
 #' @param ... further arguments passed to or from other methods.

@@ -1,4 +1,4 @@
-#' Multiblock Weighted Covariate analysis (MB-WCov)
+#' Multiblock Weighted Covariate Analysis
 #'
 #' MB-WCov analysis applied to a set of quantitative blocks of variables.
 #'

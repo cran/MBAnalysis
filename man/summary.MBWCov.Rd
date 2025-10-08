@@ -2,7 +2,7 @@
 % Please edit documentation in R/summary.MBWCov.R
 \name{summary.MBWCov}
 \alias{summary.MBWCov}
-\title{Summary of \code{\link{MBWCov}} objects}
+\title{Summary of \code{\link{MBWCov}} Objects}
 \usage{
 \method{summary}{MBWCov}(object, ...)
 }

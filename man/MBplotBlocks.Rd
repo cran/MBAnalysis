@@ -2,7 +2,7 @@
 % Please edit documentation in R/MBplotBlocks.R
 \name{MBplotBlocks}
 \alias{MBplotBlocks}
-\title{Customizable plots of blocks related information}
+\title{Customizable Plots of Blocks}
 \usage{
 MBplotBlocks(
   res,

@@ -2,7 +2,7 @@
 % Please edit documentation in R/MBplotScores.R
 \name{MBplotScores}
 \alias{MBplotScores}
-\title{Customizable plots of scores related information}
+\title{Customizable Plots of Scores}
 \usage{
 MBplotScores(
   res,

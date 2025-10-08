@@ -1,4 +1,4 @@
-#' Print of \code{\link{ComDim}} objects
+#' Print of \code{\link{ComDim}} Objects
 #'
 #' @param x An object resulting from \code{\link{ComDim}}.
 #' @param ... further arguments passed to or from other methods.

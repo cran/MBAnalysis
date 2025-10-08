@@ -2,7 +2,7 @@
 % Please edit documentation in R/summary.MBPCA.R
 \name{summary.MBPCA}
 \alias{summary.MBPCA}
-\title{Summary of \code{\link{MBPCA}} objects}
+\title{Summary of \code{\link{MBPCA}} Objects}
 \usage{
 \method{summary}{MBPCA}(object, ...)
 }

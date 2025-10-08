@@ -2,7 +2,7 @@
 % Please edit documentation in R/ComDim.R
 \name{ComDim}
 \alias{ComDim}
-\title{Common Dimensions analysis (ComDim)}
+\title{Common Dimensions Analysis}
 \usage{
 ComDim(
   X,

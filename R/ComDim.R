@@ -1,4 +1,4 @@
-#' Common Dimensions analysis (ComDim)
+#' Common Dimensions Analysis
 #'
 #' Performs ComDim analysis on a set of quantitative blocks of variables. ComDim can be viewed as a Multiblock Weighted Principal Components Analysis (MBWPCA)
 #'

@@ -2,7 +2,7 @@
 % Please edit documentation in R/coef.MBWCov.R
 \name{coef.MBWCov}
 \alias{coef.MBWCov}
-\title{Regression coefficients of MBWCov models}
+\title{Regression Coefficients of MBWCov}
 \usage{
 \method{coef}{MBWCov}(object, ncomp = object$call$ncomp, ...)
 }

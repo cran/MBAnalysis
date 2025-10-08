@@ -2,7 +2,7 @@
 % Please edit documentation in R/MBPLS.R
 \name{MBPLS}
 \alias{MBPLS}
-\title{Multiblock Partial Least Squares (MB-PLS) regression}
+\title{Multiblock Partial Least Squares Regression}
 \usage{
 MBPLS(
   X,

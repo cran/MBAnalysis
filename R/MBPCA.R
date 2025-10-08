@@ -1,4 +1,4 @@
-#' Multiblock Principal Components Analysis (MB-PCA)
+#' Multiblock Principal Components Analysis
 #'
 #' Performs MB-PCA on a set of quantitative blocks of variables.
 #'

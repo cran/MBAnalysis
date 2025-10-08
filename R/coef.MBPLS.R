@@ -1,4 +1,4 @@
-#' Regression coefficients of MBPLS models
+#' Regression Coefficients of MBPLS
 #'
 #' Computes regression coefficients from \code{\link{MBPLS}}.
 #'

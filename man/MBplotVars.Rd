@@ -2,7 +2,7 @@
 % Please edit documentation in R/MBplotVars.R
 \name{MBplotVars}
 \alias{MBplotVars}
-\title{Customizable plots of variables related information}
+\title{Customizable Plots of Variables}
 \usage{
 MBplotVars(
   res,

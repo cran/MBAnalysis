@@ -2,7 +2,7 @@
 % Please edit documentation in R/predict.MBWCov.R
 \name{predict.MBWCov}
 \alias{predict.MBWCov}
-\title{Prediction from MBWCov models}
+\title{Prediction with MBWCov}
 \usage{
 \method{predict}{MBWCov}(object, newdata = object$call$X, ncomp = object$call$ncomp, ...)
 }
